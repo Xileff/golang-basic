@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	var name string
@@ -18,4 +20,7 @@ func main() {
 	)
 
 	fmt.Print(firstName + " " + lastName)
+
+	const anjing = "lessy"
+	fmt.Print(anjing)
 }
