@@ -20,12 +20,16 @@ func main() {
 	numSlice := []int{1, 2, 3, 4, 5, 6}
 	fmt.Println(sumAll(numSlice...)) // like spred operator in TS
 
+	// function as param
+	sayHelloWithFilter("Anjing", spamFilter)
 }
 
+// normal func
 func getHello(name string) string {
 	return "Hello " + name
 }
 
+// multiple return value
 func getFullName() (string, string) {
 	return "Full", "Name"
 }
@@ -37,6 +41,7 @@ func getNamedFullName() (firstName string, lastName string) {
 	return firstName, lastName
 }
 
+// variadic function (varargs)
 func sumAll(numbers ...int) int {
 	sum := 0
 
@@ -45,4 +50,20 @@ func sumAll(numbers ...int) int {
 	}
 
 	return sum
+}
+
+// function as param
+type Filter func(string) string
+
+func sayHelloWithFilter(name string, filter Filter) {
+	filteredName := filter(name)
+	fmt.Println(filteredName)
+}
+
+func spamFilter(name string) string {
+	if name == "Anjing" {
+		return "..."
+	} else {
+		return name
+	}
 }
